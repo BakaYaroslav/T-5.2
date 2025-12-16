@@ -1,6 +1,6 @@
 # Põhiskeem
-  <img width="1222" height="715" alt="image" src="https://github.com/user-attachments/assets/bcda9eaa-0c4e-44a7-b35a-b9a2a7860d85" />
-/>
+<img width="1197" height="686" alt="image" src="https://github.com/user-attachments/assets/79aad70d-2bc4-463d-9694-168f782a1b48" />
+
 
 # module funktsioonid
 <img width="1131" height="1190" alt="image" src="https://github.com/user-attachments/assets/7fbd2086-c4a5-4c81-8f4d-47567ae180d5" />
