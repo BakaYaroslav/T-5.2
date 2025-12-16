@@ -1,8 +1,10 @@
 # Põhiskeem
-
-<img width="599" height="591" alt="{23A6D2DE-34F8-40F1-804D-23EA708E231E}" src="https://github.com/user-attachments/assets/3463d772-d010-450b-96a3-ade616e13d5b" />
+  <img width="1222" height="715" alt="image" src="https://github.com/user-attachments/assets/bcda9eaa-0c4e-44a7-b35a-b9a2a7860d85" />
+/>
 
 # module funktsioonid
-<img width="953" height="430" alt="{B24552FA-FBAB-4425-AEE2-7D1B439A5673}" src="https://github.com/user-attachments/assets/3a13d3ee-d3b9-42c3-927a-4b8d5c07c15d" />
-<img width="1090" height="532" alt="{33617A0C-9A3A-49AD-A3A0-466B1C512B48}" src="https://github.com/user-attachments/assets/cc0a8f09-79a7-4ba4-a23d-0475f54b4e00" />
+<img width="1131" height="1190" alt="image" src="https://github.com/user-attachments/assets/7fbd2086-c4a5-4c81-8f4d-47567ae180d5" />
+
+<img width="1345" height="986" alt="image" src="https://github.com/user-attachments/assets/1f986fc6-e00a-4ab2-abe7-5fc96b5e254e" />
+
 
