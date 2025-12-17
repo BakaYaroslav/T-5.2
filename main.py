@@ -23,8 +23,17 @@ while True:
     print("5 - Lõpetamine (Väljumine)")
     valik = input("Sisesta valik: ")
     if valik == "4":
-        muutumine = muuda_andmeid(k, s)
-        break
+        print("mida te tahate muudata : 1 - login ; 2 - parool ; 3 - login ja parool")
+        muda_valik = input("Sisesta valik: ")
+        if muda_valik == '1' :
+            log = muuda_login(k, s)
+            break
+        elif muda_valik == '2':
+            par = muuda_parool(k, s)
+            break
+        elif muda_valik == '3':
+            log_par = muuda_login_parool(k, s) 
+            break
     elif valik == "5":
         print("Lõpetamine (Väljumine)")
         break
