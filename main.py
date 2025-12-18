@@ -1,5 +1,6 @@
 from MyModule import *
 while True:
+    print(k, s)
     print("Vali tegevus:")
     print("1 - Registreeri kasutaja")
     print("2 - Autoriseerimine (Sisselogimine)")
@@ -32,7 +33,7 @@ while True:
             par = muuda_parool(k, s)
             break
         elif muda_valik == '3':
-            log_par = muuda_login_parool(k, s) 
+            k, s = muuda_login_parool(k, s) 
             break
     elif valik == "5":
         print("Lõpetamine (Väljumine)")

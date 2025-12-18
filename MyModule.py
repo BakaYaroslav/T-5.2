@@ -2,38 +2,30 @@ import random
 import string 
 k = ["yarik"]
 s = ["Yarik*123"]
-UserParool = False
 def reg(k, s)->str:
     while True:
         login = input("Sisesta kasutajanimi: ")
+        parool = randparool(s)
         if login not in k:
             k.append(login)
             break
         else:
             print("Sellise nimega kasutaja on juba olemas")
-    while True:
-        ask = input("kas te tahate generida parool? (jah/ei): ")
-        if ask.lower() == "jah":
-            randparool = ''.join(random.choices(string.ascii_letters + string.digits + '!@#$%^&*[]-_+=', k=12))
-            print(f"Teie genereeritud parool on: {randparool}")
-            s.append(randparool)
-            return "Registreerimine õnnestus"
+    UserParool = True
+    while UserParool:
+        parool = input("Sisesta parool: ")
+        if len(parool) < 8:
+            print ("Parool peab olema vähemalt 8 märki pikk")
+        elif not any(char.isdigit() for char in parool):
+            print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
+        elif not any(char.isupper() for char in parool):
+            print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
+        elif not any(char in '!@#$%^&*()-_+=' for char in parool):
+            print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
         else:
-            UserParool = True
-            while UserParool:
-                parool = input("Sisesta parool: ")
-                if len(parool) < 8:
-                    print ("Parool peab olema vähemalt 8 märki pikk")
-                elif not any(char.isdigit() for char in parool):
-                    print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
-                elif not any(char.isupper() for char in parool):
-                    print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
-                elif not any(char in '!@#$%^&*()-_+=' for char in parool):
-                    print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
-                else:
-                    print("Registreerimine õnnestus")
-                    s.append(parool)    
-                    break 
+            print("Registreerimine õnnestus")
+            s.append(parool)    
+            break 
            
 def auth(k, s)->str:
     login = input("Sisesta kasutajanimi: ")
@@ -49,15 +41,7 @@ def auth(k, s)->str:
 def unustanud_parool(k, s):
     while True:
         login = input("Sisesta kasutajanimi: ")
-        Ask = True
-        while Ask:
-            ask = input("kas te tahate generida parool? (jah/ei): ")
-            if ask.lower() == "jah":
-                randparool = ''.join(random.choices(string.ascii_letters + string.digits + '!@#$%^&*[]-_+=', k=12))
-                print(f"Teie genereeritud parool on: {randparool}")
-                s.append(randparool)
-                return
-        uus_parool = input("Sisesta uus parool: ")
+        uus_parool = randparool(s)
         if len(uus_parool) < 8:
             print ("Parool peab olema vähemalt 8 märki pikk")
         elif not any(char.isdigit() for char in uus_parool):
@@ -92,36 +76,27 @@ def muuda_parool(k, s):
     parool = input("sisesta parool: ")
     if login in k and s[k.index(login)] == parool:
         indeks = k.index(login)
-        Ask = True
-    while Ask:
-        ask = input("kas te tahate generida parool? (jah/ei): ")
-        if ask.lower() == "jah":
-            randparool = ''.join(random.choices(string.ascii_letters + string.digits + '!@#$%^&*[]-_+=', k=12))
-            print(f"Teie genereeritud parool on: {randparool}")
-            s.append(randparool)
-            return
-        else:
-            break
+    
 
-    while True:
-        
+    while muuda_parool:
         if login in k and s[k.index(login)] == parool:
             indeks = k.index(login)
-            uus_parool = input("siseta uus parool: ")
-            if len(uus_parool) < 8:
-                print ("Parool peab olema vähemalt 8 märki pikk")
-            elif not any(char.isdigit() for char in uus_parool):
-                print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
-            elif not any(char.isupper() for char in uus_parool):
-                print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
-            elif not any(char in '!@#$€%^&*()-_+=/' for char in uus_parool):
-                print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
-            else:
-                s[indeks] = uus_parool
-                print(f"parool muutmine õnnetus: {uus_parool}")
-                break
-        else: 
-            print("Kasutajat või parool ei leitud")
+            uus_parool = randparool(s)
+    while True:
+        if len(uus_parool) < 8:
+            print ("Parool peab olema vähemalt 8 märki pikk")
+        elif not any(char.isdigit() for char in uus_parool):
+            print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
+        elif not any(char.isupper() for char in uus_parool):
+            print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
+        elif not any(char in '!@#$€%^&*()-_+=/' for char in uus_parool):
+            print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
+        else:
+            s[indeks] = uus_parool
+            print(f"parool muutmine õnnetus: {uus_parool}")
+            break
+    else: 
+        print("Kasutajat või parool ei leitud")
 
 def muuda_login_parool(k, s):           
     index = True
@@ -135,7 +110,7 @@ def muuda_login_parool(k, s):
             print("Kasutajat või parool ei leitud")
     while True:
         uus_login = input("siseta uus login: ")
-        uus_parool = input("siseta uus parool: ")
+        uus_parool = randparool(s)
         if len(uus_parool) < 8:
             print ("Parool peab olema vähemalt 8 märki pikk")
         elif not any(char.isdigit() for char in uus_parool):
@@ -149,4 +124,17 @@ def muuda_login_parool(k, s):
             k[indeks] = uus_login
             s[indeks] = uus_parool
             print(f"kasutanimi muutmine õnnestus: {uus_login}; parool muutmine õnnestus: {uus_parool}")
+            break
+    return k, s
+
+def randparool(s):
+    Ask = True
+    while Ask:
+        ask = input("kas te tahate generida parool? (jah/ei): ")
+        if ask.lower() == "jah":
+            randparool = ''.join(random.choices(string.ascii_letters + string.digits + '!@#$%^&*[]-_+=', k=12))
+            print(f"Teie genereeritud parool on: {randparool}")
+            s.append(randparool)
+            return s
+        else:
             break
