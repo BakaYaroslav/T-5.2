@@ -5,24 +5,19 @@ s = ["Yarik*123"]
 def reg(k, s)->str:
     while True:
         login = input("Sisesta kasutajanimi: ")
-        uus_parool = input("Sisesta parool: ")
-        if len(uus_parool) < 8:
-            print ("Parool peab olema vähemalt 8 märki pikk")
-        elif not any(char.isdigit() for char in uus_parool):
-            print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
-        elif not any(char.isupper() for char in uus_parool):
-            print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
-        elif not any(char in '!@#$€%^&*()-_+=/' for char in uus_parool):
-            print("Parool peab sisaldama vähemalt ühte suurtähte, ühte numbrit ja ühte erimärki")
-        else:
-            print("Muutmine õnnestus")
+        parool = randparool(s)
         if login not in k:
             k.append(login)
-            print("Registreerimine õnnestus")
             break
         else:
             print("Sellise nimega kasutaja on juba olemas")
-            s.append(uus_parool)    
+        if login not in k:
+            k.append(login)
+            print("Registreerimine õnnestus")
+            return k, s
+        else:
+            print("Sellise nimega kasutaja on juba olemas")
+            s.append(parool)    
             break 
            
 def auth(k, s)->str:
@@ -83,10 +78,9 @@ def muuda_parool(k, s):
 def muuda_login_parool(k, s):           
     index = True
     while index:
-        login = input('sisesta vana login: ')
-        parool = input("sisesta parool: ")
-        if login in k and s[k.index(login)] == parool:
-            indeks = k.index(login)
+        parool = input("Sisesta vana parool: ")
+        if parool in s:
+            indeks = s.index(parool)
             index = False
         else: 
             print("Kasutajat või parool ei leitud")
