@@ -8,7 +8,7 @@ while True:
         print("Palun sisesta kehtiv emaili aadress.")
     else:
         try:
-            receiver_email_address = "jaroslavbaka25@gmail.com"
+            receiver_email_address = input("kirjuta saaja email adress: ")
             email_password = input("Sisesta oma emaili rakenduse parool: ")
             print("Proovin saata emaili...")
             break

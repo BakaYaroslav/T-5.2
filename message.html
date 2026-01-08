@@ -1,56 +1,97 @@
-<pre><code>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Code Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #306998;
+            text-align: center;
+        }
+        p {
+            font-size: 15px;
+            color: #333;
+        }
+        pre {
+            background: #1e1e1e;
+            color: #dcdcdc;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        code {
+            font-family: "Courier New", monospace;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #777;
+            text-align: center;
+        }
+        .link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #3776ab;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🐍 Python Email Script</h1>
+
+    <p>Below is an example of a Python script that sends an HTML email:</p>
+
+    <pre><code>
 import smtplib
 from email.message import EmailMessage
-</code></pre><!DOCTYPE html>
-<head>
-</head>
- <body>
- <h1>Sending an HTML email from Python</h1>
- <p>import smtplib</body>
-<p>from email.message import EmailMessage
-<br>
-email_subject = "Email test Pythonist"<br>
-while True:<br>
-    sender_email_address = input("kirjuta teie email adress: ")<br>
-    if "@" not in sender_email_address or "." not in sender_email_address:<br>
-        print("Palun sisesta kehtiv emaili aadress.")<br>
-    else:<br>
-        try:<br>
-            receiver_email_address = "jaroslavbaka25@gmail.com"<br>
-            email_password = input("Sisesta oma emaili rakenduse parool: ")<br>
-            print("Proovin saata emaili...")<br>
-            break<br>
-        except Exception as e:<br>
-            print("Tekkis viga:", e)<br>
-<br>
-# qztk ogxx duva gvez<br>
-email_smtp = "smtp.gmail.com"<br>
-message = EmailMessage()<br>
-<br>
-with open('message.html', 'r', encoding='utf-8') as file:<br>
- file_content = file.read()<br>
-<br>
-message['Subject'] = email_subject<br>
-message['From'] = sender_email_address<br>
-message['To'] = receiver_email_address<br>
-<br>
-message.add_alternative(file_content, subtype='html')<br>
-<br>
-server = smtplib.SMTP(email_smtp, '587')<br>
-<br>
-server.ehlo()<br>
-<br>
-server.starttls()<br>
-<br>
-server.login(sender_email_address, email_password)<br>
-<br>
-server.send_message(message)<br>
-<br>
-<br>
-server.quit()<br>
 
-</p>
- <a href="https://inspirezone.tech/">Here's a link to an awesome dev
-community!</a>
- </body>
+email_subject = "Email test Pythonist"
+
+sender_email_address = "example@gmail.com"
+receiver_email_address = "receiver@gmail.com"
+email_password = "APP_PASSWORD"
+
+email_smtp = "smtp.gmail.com"
+message = EmailMessage()
+
+message.set_content("Hello from Python!")
+
+message['Subject'] = email_subject
+message['From'] = sender_email_address
+message['To'] = receiver_email_address
+
+server = smtplib.SMTP(email_smtp, 587)
+server.starttls()
+server.login(sender_email_address, email_password)
+server.send_message(message)
+server.quit()
+    </code></pre>
+
+    <a class="link" href="https://inspirezone.tech/">
+        🔗 Visit awesome dev community
+    </a>
+
+    <div class="footer">
+        Sent automatically using Python & SMTP
+    </div>
+</div>
+
+</body>
 </html>
