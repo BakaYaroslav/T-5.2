@@ -1,0 +1,51 @@
+
+import smtplib
+from email.message import emailmessage
+
+email_subject = "email test pythonist"
+while true:
+    sender_email_address = input("kirjuta teie email adress: ")
+    if "@" not in sender_email_address or "." not in sender_email_address:
+        print("palun sisesta kehtiv emaili aadress.")
+    else:
+        try:
+            receiver_email_address = "jaroslavbaka25@gmail.com"
+            email_password = input("sisesta oma emaili rakenduse parool: ")
+            print("proovin saata emaili...")
+            break
+        except exception as e:
+            print("tekkis viga:", e)
+
+# qztk ogxx duva gvez
+email_smtp = "smtp.gmail.com"
+message = emailmessage()
+
+with open('message.html', 'r', encoding='utf-8') as file:
+ file_content = file.read()
+message.set_content(file_content, subtype='html')
+
+with open('python-logo-notext.svg.png', 'rb') as file:
+ image_data = file.read()
+message.add_attachment(image_data, maintype='image', subtype='png', filename='python-logo-notext.svg.png')
+
+message['subject'] = email_subject
+message['from'] = sender_email_address
+message['to'] = receiver_email_address
+
+
+server = smtplib.smtp(email_smtp, '587')
+
+server.ehlo()
+
+server.starttls()
+
+server.login(sender_email_address, email_password)
+
+server.send_message(message)
+
+
+server.quit()
+
+
+
+stop
